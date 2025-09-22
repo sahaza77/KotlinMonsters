@@ -1,6 +1,7 @@
 package org.example
 
 import org.example.dresseur.Entraineur
+import org.example.item.Badge
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -84,24 +85,22 @@ val route2 = Zone(
 fun main() {
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
-    val monstre1 = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
+    val monstre = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
     val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
     val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
 
-    println("Monstre1 niveau: ${monstre1.niveau} (devrait être >= 5)")
-    println("Monstre1 attaque: ${monstre1.attaque} (base: ${especeSpringleaf.baseAttaque})")
-    println("Monstre1 pvMax: ${monstre1.pvMax} (base: ${especeSpringleaf.basePv})")
-    println("Ajout de 300 d'exp à monstre1")
-    monstre1.exp += 300.0
-    println("Monstre1 nouveau niveau: ${monstre1.niveau}")
-    println("Monstre1 nouvelle attaque: ${monstre1.attaque}")
-    println("Monstre1 nouveau pvMax: ${monstre1.pvMax}")
-    monstre1.pv = -50
-    println("PV de monstre1 après -50: ${monstre1.pv} (devrait être 0)")
+    val dresseurChampion = Entraineur(id = 1, nom = "Sacha", argents = 1000)
 
-    monstre1.pv = monstre1.pvMax + 100
-    println("PV de monstre1 après +100 au dessus de pvMax: ${monstre1.pv} (devrait être pvMax = ${monstre1.pvMax})")
-}
+    // Création d'un badge
+    val badgeTest = Badge(
+        id = 101,
+        nom = "Badge Volcan",
+        description = "Badge à obtenir après avoir battu Sacha",
+        champion = dresseurChampion
+    )
+    // Point d'arrêt ici pour inspecter badgeTest
+    println("Badge créé : ${badgeTest.nom}, Champion : ${badgeTest.champion.nom}")
+    }
 /**
  * Change la couleur du message donné selon le nom de la couleur spécifié.
  * Cette fonction utilise les codes d'échappement ANSI pour appliquer une couleur à la sortie console. Si un nom de couleur

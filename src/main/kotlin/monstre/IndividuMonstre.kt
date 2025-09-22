@@ -7,7 +7,7 @@ import kotlin.random.nextInt
 
 class IndividuMonstre (
     val id: Int,
-    val nom: String,
+    var nom: String,
     expInit: Double, // Ce n'est pas une propriété directement
     val especeMonstre: EspeceMonstre,
     val entraineur: Entraineur?, //Nullable
@@ -73,7 +73,6 @@ class IndividuMonstre (
             val alea = Random.nextInt(bonusAleatoire)
             return base + alea
         }
-
         // Calculs
         val gainAttaque = modifieStat(especeMonstre.baseAttaque, -2..2)
         val gainDefense = modifieStat(especeMonstre.baseDefense, -2..2)
@@ -96,5 +95,83 @@ class IndividuMonstre (
         // S'assurer que pv ne dépasse pas le nouveau pvMax
         if (pv > pvMax) pv = pvMax
     }
-}
+    /**
+     * Attaque un autre [IndividuMonstre] et inflige des dégâts.
+     *
+     * Les dégâts sont calculés comme suit :
+     * `dégâts = attaque - (défense / 2)` (minimum 1 dégât).
+     *
+     * @param cible Monstre cible de l'attaque.
+     */
+    fun attaquer(cible: IndividuMonstre) {
+        // Initialiser degatBrut
+        val degatBrut = this.attaque
 
+        // Calcul degatTotal
+        var degatTotal = degatBrut - (cible.defense / 2)
+
+        // S'assurer que degatTotal >= 1
+        if (degatTotal < 1) {
+            degatTotal = 1
+        }
+
+        // Enregistrer pvAvant
+        val pvAvant = cible.pv
+
+        // Infliger les dégâts (le setter pv gère les bornes)
+        cible.pv -= degatTotal
+
+        // Enregistrer pvApres
+        val pvApres = cible.pv
+
+        // Affichage
+        println("${this.nom} inflige ${pvAvant - pvApres} dégâts à ${cible.nom}")
+    }
+    /**
+     * Demande au joueur de renommer le monstre.
+     * Si la saisie est vide, le nom n'est pas modifié.
+     */
+    fun renommer() {
+        println("Renommer ${this.nom} ? (laisser vide pour garder le nom actuel)")
+
+        val nouveauNom = readlnOrNull()?.trim() ?: ""
+
+        if (nouveauNom.isEmpty()) {
+            println("Le nom de ${this.nom} reste inchangé.")
+        } else {
+            println("Le nom de ${this.nom} devient $nouveauNom.")
+            this.nom = nouveauNom
+        }
+    }
+    /**
+     * Affiche l’art ASCII de l’espèce et les détails du monstre côte à côte.
+     */
+    fun afficheDetail() {
+        // Récupérer l’art ASCII depuis l’espèce
+        val art = especeMonstre.afficheArt()
+        val artLines = art.lines()
+
+        // Construire la liste des détails
+        val details = listOf(
+            "Nom: $nom   Niveau: $niveau",
+            "Exp: $experience",
+            "PV: $pv / $pvMax",
+            "====================",
+            "Atq: $attaque   Def: $defense   Vitesse: $vitesse",
+            "AtqSpe: $attaqueSpe   DefSpe: $defenseSpe",
+            "===================="
+        )
+
+        // Largeur max de l’art (pour l’alignement)
+        val maxArtWidth = artLines.maxOfOrNull { it.length } ?: 0
+        // Nombre max de lignes à afficher
+        val maxLines = maxOf(artLines.size, details.size)
+
+        for (i in 0 until maxLines) {
+            val artLine = if (i < artLines.size) artLines[i] else ""
+            val detailLine = if (i < details.size) details[i] else ""
+            val paddedArt = artLine.padEnd(maxArtWidth + 4) // 4 espaces de séparation
+            println(paddedArt + detailLine)
+        }
+    }
+}
