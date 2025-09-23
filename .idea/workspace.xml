@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/item/Badge.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/item/Item.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/item/Utilisable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/item/MonsterKube.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatMonstre.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/dresseur/Entraineur.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dresseur/Entraineur.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -116,7 +113,8 @@
       <updated>1758177677917</updated>
       <workItem from="1758177679624" duration="10948000" />
       <workItem from="1758283651644" duration="10425000" />
-      <workItem from="1758523412443" duration="10937000" />
+      <workItem from="1758523412443" duration="10979000" />
+      <workItem from="1758610005842" duration="9762000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit">
       <option name="closed" value="true" />

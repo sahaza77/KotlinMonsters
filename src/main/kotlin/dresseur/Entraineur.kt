@@ -1,5 +1,6 @@
 package org.example.dresseur
 
+import org.example.items.Item
 import org.example.monstre.IndividuMonstre
 
 /**
@@ -18,8 +19,8 @@ class Entraineur(
     var nom: String,
     var argents:Int,
     var equipeMonstre: MutableList<IndividuMonstre> = mutableListOf(),
-    var boiteMonstre: MutableList<IndividuMonstre> = mutableListOf()
-    //TODO sacAKube
+    var boiteMonstre: MutableList<IndividuMonstre> = mutableListOf(),
+    var SacAItems: MutableList<Item> = mutableListOf()
 ) {
     /**
      * Affiche les détails de l'entraîneur, y compris son nom et la quantité d'argent en sa possession.

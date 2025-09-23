@@ -2,6 +2,8 @@ package org.example
 
 import org.example.dresseur.Entraineur
 import org.example.item.Badge
+import org.example.item.MonsterKube
+import org.example.jeu.CombatMonstre
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -82,6 +84,7 @@ val route2 = Zone(
     expZone = 8,
     especesMonstres = mutableListOf(especeAquamy)
 )
+
 fun main() {
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
@@ -89,18 +92,16 @@ fun main() {
     val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
     val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
 
-    val dresseurChampion = Entraineur(id = 1, nom = "Sacha", argents = 1000)
+    // Créer un MonsterKube avec une chance de capture, par exemple 50%
+    val kube = MonsterKube(1, "Monster Kube", "Une capsule pour capturer des monstres", 50.0)
 
-    // Création d'un badge
-    val badgeTest = Badge(
-        id = 101,
-        nom = "Badge Volcan",
-        description = "Badge à obtenir après avoir battu Sacha",
-        champion = dresseurChampion
-    )
-    // Point d'arrêt ici pour inspecter badgeTest
-    println("Badge créé : ${badgeTest.nom}, Champion : ${badgeTest.champion.nom}")
-    }
+    val monstreJoueur = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
+    val monstreSauvage = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
+
+    joueur.equipeMonstre.add(monstreJoueur)
+    val combat = CombatMonstre(monstreJoueur, monstreSauvage)
+    combat.lanceCombat()
+}
 /**
  * Change la couleur du message donné selon le nom de la couleur spécifié.
  * Cette fonction utilise les codes d'échappement ANSI pour appliquer une couleur à la sortie console. Si un nom de couleur
