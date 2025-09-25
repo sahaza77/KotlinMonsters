@@ -10,7 +10,7 @@ class IndividuMonstre (
     var nom: String,
     expInit: Double, // Ce n'est pas une propriété directement
     val especeMonstre: EspeceMonstre,
-    val entraineur: Entraineur?, //Nullable
+    var entraineur: Entraineur?, //Nullable
 ) {
     var experience: Double = expInit
     var niveau: Int = 1

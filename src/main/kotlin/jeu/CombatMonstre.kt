@@ -90,21 +90,21 @@ class CombatMonstre (
     }
 
     fun utiliserItem(): Boolean {
-        if (joueur.SacAItems.isEmpty()) { // corrigé sacItems -> sacAKube
+        if (joueur.sacAItems.isEmpty()) { // corrigé sacItems -> sacAKube
             println("Votre sac est vide !")
             return false
         }
 
         println("Voici vos items :")
-        joueur.SacAItems.forEachIndexed { index, item ->
+        joueur.sacAItems.forEachIndexed { index, item ->
             println("$index : ${item.nom} - ${item.description}") // item doit avoir nom et description
         }
 
         print("Entrez l'indice de l'item à utiliser : ")
         val index = readLine()?.toIntOrNull() ?: -1
 
-        if (index in joueur.SacAItems.indices) {
-            val item: Item = joueur.SacAItems[index]
+        if (index in joueur.sacAItems.indices) {
+            val item: Item = joueur.sacAItems[index]
             if (item is Utilisable) {
                 val succes = item.utiliser(monstreSauvage)
                 if (succes) {

@@ -4,6 +4,7 @@ import org.example.dresseur.Entraineur
 import org.example.item.Badge
 import org.example.item.MonsterKube
 import org.example.jeu.CombatMonstre
+import org.example.jeu.Partie
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -70,6 +71,66 @@ val especeAquamy = EspeceMonstre(
     particularites = "Fait baisser la température en s’endormant.",
     caracteres = "Calme, rêveur, mystérieux"
 )
+val especeLaoumi = EspeceMonstre(
+    id = 8,
+    nom = "Laoumi",
+    type = "Animal",
+    baseAttaque = 11,
+    baseDefense = 10,
+    baseVitesse = 9,
+    baseAttaqueSpe = 8,
+    baseDefenseSpe = 11,
+    basePv = 58,
+    modAttaque = 9.0,
+    modDefense = 10.0,
+    modVitesse = 7.0,
+    modAttaqueSpe = 9.0,
+    modDefenseSpe = 11.0,
+    modPv = 25.0,
+    description = "Insecte à carapace luisante, se déplace par bonds et vibre des antennes.",
+    particularites = "Se déplace par bonds, vibre des antennes.",
+    caracteres = "Travailleur, sociable, infatigable"
+)
+val especeGalum = EspeceMonstre(
+    id = 13,
+    nom = "Galum",
+    type = "Minéral",
+    baseAttaque = 12,
+    baseDefense = 15,
+    baseVitesse = 6,
+    baseAttaqueSpe = 8,
+    baseDefenseSpe = 12,
+    basePv = 55,
+    modAttaque = 10.0,
+    modDefense = 12.0,
+    modVitesse = 4.0,
+    modAttaqueSpe = 6.0,
+    modDefenseSpe = 6.0,
+    modPv = 26.0,
+    description = "Golem ancien de pierre, très résistant, semble figé dans le temps.",
+    particularites = "Peut rester immobile pendant des heures comme une statue.",
+    caracteres = "Sérieux, stoïque, fiable"
+)
+val especePyrolyx = EspeceMonstre(
+    id = 10,
+    nom = "Pyrolyx",
+    type = "Feu",
+    baseAttaque = 14,
+    baseDefense = 9,
+    baseVitesse = 14,
+    baseAttaqueSpe = 13,
+    baseDefenseSpe = 8,
+    basePv = 65,
+    modAttaque = 11.0,
+    modDefense = 5.0,
+    modVitesse = 10.0,
+    modAttaqueSpe = 10.0,
+    modDefenseSpe = 7.0,
+    modPv = 30.0,
+    description = "Dragon de feu, crache des flammes ardentes, rapide et puissant.",
+    particularites = "Peut cracher des flammes très chaudes.",
+    caracteres = "Féroce, impulsif, loyal"
+)
 // Déclarations des zones
 val route1 = Zone(
     id = 1,
@@ -84,23 +145,62 @@ val route2 = Zone(
     expZone = 8,
     especesMonstres = mutableListOf(especeAquamy)
 )
+// Définition des items
+val kube1 = MonsterKube(1, "Monster Kube", "Une capsule pour capturer des monstres", 50.0)
+
+val monstre1 = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
+val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
+val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
 
 fun main() {
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
-    val monstre = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
-    val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
-    val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
+    joueur.sacAItems.add(kube1)
 
-    // Créer un MonsterKube avec une chance de capture, par exemple 50%
-    val kube = MonsterKube(1, "Monster Kube", "Une capsule pour capturer des monstres", 50.0)
 
-    val monstreJoueur = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
-    val monstreSauvage = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
 
-    joueur.equipeMonstre.add(monstreJoueur)
-    val combat = CombatMonstre(monstreJoueur, monstreSauvage)
-    combat.lanceCombat()
+    val partie = nouvellePartie()
+    partie.choixStarter()
+    partie.jouer()
+
+    /* Ancien test commenté // Créer un MonsterKube avec une chance de capture, par exemple 50%
+     val kube = MonsterKube(1, "Monster Kube", "Une capsule pour capturer des monstres", 50.0)
+
+     val monstreJoueur = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
+     val monstreSauvage = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
+
+     joueur.equipeMonstre.add(monstreJoueur)
+     val combat = CombatMonstre(monstreJoueur, monstreSauvage)
+     combat.lanceCombat()*/
+}
+fun nouvellePartie(): Partie {
+    // Affiche un message d'accueil pour la nouvelle partie
+    println("Bienvenue dans le KotlinMonsters ! Préparez-vous à débuter une nouvelle aventure.")
+
+    // Demande à l'utilisateur d'entrer son nom
+    print("Veuillez entrer votre nom : ")
+    val nomJoueur = readLine() ?: "Joueur" // Si l'utilisateur ne saisit rien, on utilise "Joueur"
+
+    // Crée un nouvel entraîneur avec le nom saisi
+    val entraineur = Entraineur(1, nomJoueur, 100)
+
+    // Crée une zone initiale pour la nouvelle partie
+    val zoneInitiale = Zone(
+        id = 0,
+        nom = "Zone de départ",
+        expZone = 5,
+        especesMonstres = mutableListOf(especeSpringleaf, especeFlamkip, especeAquamy)
+    )
+
+    // Crée une nouvelle instance de Partie avec l'entraîneur et la zone initiale
+    val partie = Partie(
+        id = 1,
+        joueur = entraineur,
+        zone = zoneInitiale
+    )
+
+    // Retourne la nouvelle partie créée
+    return partie
 }
 /**
  * Change la couleur du message donné selon le nom de la couleur spécifié.
