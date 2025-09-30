@@ -32,5 +32,48 @@ class Entraineur(
     fun afficheDetail(){
         println("Dresseur : ${this.nom}")
         println("Argents: ${this.argents} ")
+    }fun soigneEquipe() {
+        // Parcours de chaque monstre dans l'équipe
+        for (monstre in equipeMonstre) {
+            // On assigne les PV actuels (pv) à la valeur maximale (pvMax)
+            monstre.pv = monstre.pvMax
+        }
     }
+    fun choisirMonstre(): IndividuMonstre {
+        // Filtrer la liste des monstres vivants (pv > 0)
+        val monstresVivants = equipeMonstre.filter { it.pv > 0 }
+
+        // Si un seul monstre est vivant, le retourner directement (choix automatique)
+        if (monstresVivants.size == 1) {
+            return monstresVivants[0]
+        }
+
+        // Afficher le message pour inviter à choisir un monstre
+        println("Choisir un monstre de l'équipe :")
+
+        // Afficher la liste des monstres vivants avec leur index et leurs PV
+        monstresVivants.forEachIndexed { index, monstre ->
+            println("$index: ${monstre.especeMonstre.nom} (PV: ${monstre.pv}/${monstre.pvMax})")
+        }
+
+        // Boucle pour demander une saisie valide à l'utilisateur
+        while (true) {
+            print("Entrez le numéro du monstre : ")
+
+            // Lire la saisie utilisateur et tenter de la convertir en entier
+            val choix = readLine()?.toIntOrNull()
+
+            // Vérifier si le choix est valide (index dans la liste)
+            if (choix != null && choix in monstresVivants.indices) {
+                // Retourner le monstre choisi
+                return monstresVivants[choix]
+            }
+
+            // En cas d'erreur, afficher un message et recommencer la saisie
+            println("Choix invalide, réessayez.")
+        }
+    }
+
+
+
 }

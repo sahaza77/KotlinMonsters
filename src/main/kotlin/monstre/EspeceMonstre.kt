@@ -47,7 +47,10 @@ class EspeceMonstre (
     val description: String = "",
     val particularites: String = "",
     val caracteres: String = "",
+    var palierEvolution: PalierEvolution?=null,
+    val elements: MutableList<Element> = mutableListOf<Element>()
 ) {
+
     /**
      * Affiche la représentation artistique ASCII du monstre.
      *

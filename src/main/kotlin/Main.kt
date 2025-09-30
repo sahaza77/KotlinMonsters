@@ -1,13 +1,25 @@
 package org.example
-
 import org.example.dresseur.Entraineur
 import org.example.item.Badge
 import org.example.item.MonsterKube
 import org.example.jeu.CombatMonstre
 import org.example.jeu.Partie
+import org.example.monde.Ville
 import org.example.monde.Zone
+import org.example.monstre.Element
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
+import org.example.monstre.PalierEvolution
+
+// --------------------
+// 🌍 Variables globales (déclarées avant le main())
+// --------------------
+val feu = Element(1, "Feu")
+val plante = Element(2, "Plante")
+val eau = Element(3, "Eau")
+val insecte = Element(4, "Insecte")
+val roche = Element(5, "Roche")
+val normal = Element(6, "Normal")
 
 var joueur = Entraineur(1,"Sacha",100)
 var rival = Entraineur(2, "Regis", 200)
@@ -131,6 +143,37 @@ val especePyrolyx = EspeceMonstre(
     particularites = "Peut cracher des flammes très chaudes.",
     caracteres = "Féroce, impulsif, loyal"
 )
+val especePyrokip = EspeceMonstre(
+    id = 5,
+    nom = "pyrokip",
+    type = "Animal",
+    baseAttaque = 18,
+    baseDefense = 12,
+    baseVitesse = 15,
+    baseAttaqueSpe = 22,
+    baseDefenseSpe = 11,
+    basePv = 70,
+    modAttaque = 12.0,
+    modDefense = 8.0,
+    modVitesse = 11.0,
+    modAttaqueSpe = 12.5,
+    modDefenseSpe = 8.0,
+    modPv = 15.0,
+    description = "Pyrokip, l’évolution de Flamkip. Son feu est devenu intense et ses flammes sont capables de fondre la pierre. Fier et courageux, il protège son dresseur à tout prix.",
+    particularites = "Ses flammes changent de couleur selon son humeur : rouge vif en colère, dorées quand il est calme.",
+    caracteres = "Fier, protecteur, explosif.",
+    elements = mutableListOf(feu)
+
+)
+// Création du palier d'évolution pour niveau 7 vers pyrokip
+val palierEvolutionFlamkip = PalierEvolution (
+    id = 1,
+    niveauRequis = 7,
+    evolution = especePyrokip  // L'espèce vers laquelle on évolue
+)
+
+
+
 // Déclarations des zones
 val route1 = Zone(
     id = 1,
@@ -152,16 +195,84 @@ val monstre1 = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
 val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
 val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
 
+
+
+// Définition de l'espèce Galum qu'on pourra rencontrer à RacailleCity
+val galum = EspeceMonstre(
+    id = 99,
+    nom = "Galum",
+    type = "Roche",
+    baseAttaque = 10,
+    baseDefense = 15,
+    baseVitesse = 5,
+    baseAttaqueSpe = 8,
+    baseDefenseSpe = 12,
+    basePv = 40,
+    modAttaque = 1.1,
+    modDefense = 1.2,
+    modVitesse = 0.9,
+    modAttaqueSpe = 1.0,
+    modDefenseSpe = 1.1,
+    modPv = 1.3,
+    description = "Galum, un monstre rocheux très robuste.",
+    particularites = "Très résistant mais lent.",
+    caracteres =  "Solide, calme.",
+    elements = mutableListOf() // ou listOf(roche) si tu as un élément roche
+)
+// Création de la ville RacailleCity avec Galum comme espèce disponible
+val racailleCity = Ville(
+    id = 3,
+    nom = "RacailleCity",
+    expZone = 300,
+    especesMonstres = mutableListOf(galum)
+)
+
+
 fun main() {
+
+    // --- Définition des forces/faiblesses/immunisés ---
+    // 🔥 Feu
+    feu.forces.addAll(listOf(plante, insecte, roche))
+    feu.faiblesses.addAll(listOf(eau, roche))
+
+    // 🌱 Plante
+    plante.forces.addAll(listOf(eau, roche))
+    plante.faiblesses.addAll(listOf(feu, insecte))
+
+    // 💧 Eau
+    eau.forces.addAll(listOf(feu, roche))
+    eau.faiblesses.addAll(listOf(plante))
+
+    // 🐞 Insecte
+    insecte.forces.addAll(listOf(plante))
+    insecte.faiblesses.addAll(listOf(feu, roche))
+
+    // 🪨 Roche
+    roche.forces.addAll(listOf(feu, insecte))
+    roche.faiblesses.addAll(listOf(eau, plante))
+
+    // ⚪ Normal
+    normal.faiblesses.addAll(listOf(roche))
+    normal.immunises.addAll(emptyList()) // ex: pourrait avoir spectre plus tard
+
+    // --- Affectation des éléments aux espèces ---
+    especeSpringleaf.elements.add(plante)   // 🌱
+    especeFlamkip.elements.add(feu)        // 🔥
+    especeAquamy.elements.add(eau)         // 💧
+    especeLaoumi.elements.add(insecte)     // 🐞
+    especeGalum.elements.add(roche)        // 🪨
+    especePyrolyx.elements.add(feu)        // 🔥
+
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
     joueur.sacAItems.add(kube1)
 
-
-
     val partie = nouvellePartie()
     partie.choixStarter()
     partie.jouer()
+    // Association du palier d'évolution à l'espèce flamkip
+    // Cela permet de savoir que flamkip peut évoluer selon ce palier
+    especeFlamkip.palierEvolution = palierEvolutionFlamkip
 
     /* Ancien test commenté // Créer un MonsterKube avec une chance de capture, par exemple 50%
      val kube = MonsterKube(1, "Monster Kube", "Une capsule pour capturer des monstres", 50.0)
@@ -172,6 +283,30 @@ fun main() {
      joueur.equipeMonstre.add(monstreJoueur)
      val combat = CombatMonstre(monstreJoueur, monstreSauvage)
      combat.lanceCombat()*/
+
+    // Connexion de route2 à RacailleCity
+    // Cela permet d'aller vers la ville depuis route2
+    route2.zoneSuivante = racailleCity
+
+
+
+    // Connexion de RacailleCity vers route2
+    // Cela permet de revenir en arrière depuis la ville
+    racailleCity.zonePrecedente = route2
+
+
+    // -------------------------
+    // ✅ Test fonctionnel
+    // -------------------------
+
+    println("Depuis route2, la zone suivante est : ${route2.zoneSuivante?.nom}")
+    println("Depuis RacailleCity, la zone précédente est : ${racailleCity.zonePrecedente?.nom}")
+
+    // Vérifie que la navigation fonctionne bien dans les deux sens
+    assert(route2.zoneSuivante?.nom == "RacailleCity")
+    assert(racailleCity.zonePrecedente?.nom == "Route 2")
+    println("Tests OK")
+
 }
 fun nouvellePartie(): Partie {
     // Affiche un message d'accueil pour la nouvelle partie
@@ -201,6 +336,9 @@ fun nouvellePartie(): Partie {
 
     // Retourne la nouvelle partie créée
     return partie
+
+
+
 }
 /**
  * Change la couleur du message donné selon le nom de la couleur spécifié.

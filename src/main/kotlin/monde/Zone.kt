@@ -17,7 +17,9 @@ import org.example.monstre.EspeceMonstre
  * @property zoneSuivante Référence vers la zone suivante (ou null s'il n'y en a pas).
  * @property zonePrecedente Référence vers la zone précédente (ou null s'il n'y en a pas).
  */
-class Zone(
+// Classe de base représentant une zone du jeu
+// On ajoute 'open' pour qu'elle puisse être héritée par Ville
+open class Zone(
     val id: Int,
     val nom: String,
     val expZone: Int,

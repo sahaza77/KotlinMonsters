@@ -9,8 +9,9 @@ class IndividuMonstre (
     val id: Int,
     var nom: String,
     expInit: Double, // Ce n'est pas une propriété directement
-    val especeMonstre: EspeceMonstre,
+    var especeMonstre: EspeceMonstre,
     var entraineur: Entraineur?, //Nullable
+    var palierEvolution: PalierEvolution? = null
 ) {
     var experience: Double = expInit
     var niveau: Int = 1
@@ -61,11 +62,28 @@ class IndividuMonstre (
      * @param niveau Niveau cible.
      * @return Expérience cumulée nécessaire pour atteindre ce niveau.
      */
+    fun evoluer() {
+        especeMonstre = palierEvolution?.evolution ?: especeMonstre //evoluer()
+        println("Le monstre évolue en ${especeMonstre.nom} !")
+    }
+
     fun palierExp(niveau: Int): Double {
         return 100 * Math.pow((niveau - 1).toDouble(), 2.0)
     }
     fun levelUp() {
         niveau++ // Incrément du niveau
+        if (especeMonstre.palierEvolution != null) {
+            if (especeMonstre.palierEvolution!!.peutEvoluer(this)) {
+                evoluer()
+            } else {
+                // Ne rien faire (pas d'évolution)
+            }
+        } else {
+            println("Pas de palier d'évolution défini")
+        }
+
+        // Le reste du code levelUp, par exemple modifications des caractéristiques
+        // ...
 
         // Fonction de base : (modCaractéristique * potentiel), arrondi
         fun modifieStat(modCaract: Int, bonusAleatoire: IntRange): Int {
