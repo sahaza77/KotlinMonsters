@@ -10,6 +10,8 @@ import org.example.monstre.Element
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
 import org.example.monstre.PalierEvolution
+import org.example.monstre.Technique
+import org.example.monstre.palierTechnique
 
 // --------------------
 // 🌍 Variables globales (déclarées avant le main())
@@ -20,6 +22,88 @@ val eau = Element(3, "Eau")
 val insecte = Element(4, "Insecte")
 val roche = Element(5, "Roche")
 val normal = Element(6, "Normal")
+
+// ==========================
+// ⚔️ Techniques
+// ==========================
+
+// ⚪ Normal
+val charge = Technique(
+    id = 1,
+    nom = "Charge",
+    precision = 95.0,
+    multiplicateurDePuissance = 1.0,
+    estBuff = false,
+    estDebuff = false,
+    faireDegat = true,
+    estSpecial = true,
+    elementTechnique = normal
+)
+
+// 🔥 Feu
+val flammeche = Technique(
+    id = 2,
+    nom = "Flammèche",
+    precision = 90.0,
+    multiplicateurDePuissance = 1.2,
+    estBuff = false,
+    estDebuff = false,
+    faireDegat = true,
+    estSpecial = true,
+    elementTechnique = feu
+)
+
+// 💧 Eau
+val pistoletAEau = Technique(
+    id = 3,
+    nom = "Pistolet à Eau",
+    precision = 95.0,
+    multiplicateurDePuissance = 1.1,
+    estBuff = false,
+    estDebuff = false,
+    faireDegat = true,
+    estSpecial = true,
+    elementTechnique = eau
+)
+
+// 🍃 Plante
+val fouetLianes = Technique(
+    id = 4,
+    nom = "Fouet Lianes",
+    precision = 95.0,
+    multiplicateurDePuissance = 1.0,
+    estBuff = false,
+    estDebuff = false,
+    faireDegat = true,
+    estSpecial = true,
+    elementTechnique = plante
+)
+
+// 🐞 Insecte
+val dardVenin = Technique(
+    id = 5,
+    nom = "Dard-Venin",
+    precision = 100.0,
+    multiplicateurDePuissance = 0.9,
+    estBuff = false,
+    estDebuff = false,
+    faireDegat = true,
+    estSpecial = true,
+    elementTechnique = insecte
+)
+
+// 🪨 Roche
+val jetPierres = Technique(
+    id = 6,
+    nom = "Jet de Pierres",
+    precision = 90.0,
+    multiplicateurDePuissance = 1.3,
+    estBuff = false,
+    estDebuff = false,
+    faireDegat = true,
+    estSpecial = true,
+    elementTechnique = roche
+)
 
 var joueur = Entraineur(1,"Sacha",100)
 var rival = Entraineur(2, "Regis", 200)
@@ -143,28 +227,41 @@ val especePyrolyx = EspeceMonstre(
     particularites = "Peut cracher des flammes très chaudes.",
     caracteres = "Féroce, impulsif, loyal"
 )
+// Création d'une nouvelle espèce Pyrokip, évolution de Flamkip
 val especePyrokip = EspeceMonstre(
-    id = 5,
-    nom = "pyrokip",
-    type = "Animal",
+    id = 5,                            // Identifiant unique de l'espèce
+    nom = "pyrokip",                  // Nom de l'espèce
+    type = "Animal",                  // Type de l'espèce (exemple : Animal, Plante, Feu...)
+
+    // Statistiques de base de l'espèce
     baseAttaque = 18,
     baseDefense = 12,
     baseVitesse = 15,
     baseAttaqueSpe = 22,
     baseDefenseSpe = 11,
     basePv = 70,
+
+    // Modificateurs de statistiques pour les calculs en combat
     modAttaque = 12.0,
     modDefense = 8.0,
     modVitesse = 11.0,
     modAttaqueSpe = 12.5,
     modDefenseSpe = 8.0,
     modPv = 15.0,
-    description = "Pyrokip, l’évolution de Flamkip. Son feu est devenu intense et ses flammes sont capables de fondre la pierre. Fier et courageux, il protège son dresseur à tout prix.",
-    particularites = "Ses flammes changent de couleur selon son humeur : rouge vif en colère, dorées quand il est calme.",
-    caracteres = "Fier, protecteur, explosif.",
-    elements = mutableListOf(feu)
 
+    // Description narrative de l'espèce pour enrichir le lore du jeu
+    description = "Pyrokip, l’évolution de Flamkip. Son feu est devenu intense et ses flammes sont capables de fondre la pierre. Fier et courageux, il protège son dresseur à tout prix.",
+
+    // Particularités uniques de l'espèce
+    particularites = "Ses flammes changent de couleur selon son humeur : rouge vif en colère, dorées quand il est calme.",
+
+    // Traits de caractère pour donner de la personnalité au monstre
+    caracteres = "Fier, protecteur, explosif.",
+
+    // Éléments (types) associés à cette espèce, ici l’élément feu
+    elements = mutableListOf(feu)
 )
+
 // Création du palier d'évolution pour niveau 7 vers pyrokip
 val palierEvolutionFlamkip = PalierEvolution (
     id = 1,
@@ -191,9 +288,7 @@ val route2 = Zone(
 // Définition des items
 val kube1 = MonsterKube(1, "Monster Kube", "Une capsule pour capturer des monstres", 50.0)
 
-val monstre1 = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
-val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
-val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
+
 
 
 
@@ -266,6 +361,20 @@ fun main() {
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
     joueur.sacAItems.add(kube1)
+
+    // Après la déclaration de especeFlamkip
+    val paliersFlamkip = mutableListOf<palierTechnique>(
+        palierTechnique(3, 3, charge),
+        palierTechnique(6, 6, flammeche)
+    )
+    especeFlamkip.listepalierTechnique = paliersFlamkip
+
+// Après la déclaration de especeSpringleaf
+    val paliersSpringleaf = mutableListOf<palierTechnique>(
+        palierTechnique(3, 3, fouetLianes),
+        palierTechnique(6, 6, charge)
+    )
+    especeSpringleaf.listepalierTechnique = paliersSpringleaf
 
     val partie = nouvellePartie()
     partie.choixStarter()

@@ -8,6 +8,7 @@ class Technique (
     val estBuff: Boolean,
     val estDebuff: Boolean,
     val faireDegat: Boolean,
+    val estSpecial: Boolean,
     val elementTechnique: Element
 ) {
     /**
@@ -20,6 +21,7 @@ class Technique (
         val nb = (1..100).random()
         return nb <= precision
     }
+
     /**
      * Calcule le bonus/malus STAB (Same Type Attack Bonus).
      *
@@ -32,10 +34,31 @@ class Technique (
      */
     fun calculBonusStab(monstre: IndividuMonstre): Double {
         return if (monstre.especeMonstre.elements.contains(elementTechnique)) {
-            multiplicateurDePuissance + 15
+            multiplicateurDePuissance + 0.15
         } else {
-            val malus = multiplicateurDePuissance -15
+            val malus = multiplicateurDePuissance - 0.15
             if (malus < 0.1) 0.1 else malus
         }
     }
-}
+        fun effet(attaquant: IndividuMonstre, defenseur: IndividuMonstre): Double {
+            // TODO gérer les buffs / debuffs plus tard
+            if (!faireDegat) return 0.0
+
+            // Choix attaque spéciale ou physique
+            val degatsBase = if (estSpecial) attaquant.attaqueSpe else attaquant.attaque
+
+            // Bonus STAB (si l’élément de la technique correspond à l’élément du monstre attaquant)
+            val multiplicateur = calculBonusStab(attaquant)
+
+            // Efficacité élémentaire contre le défenseur
+            var multElement = elementTechnique.efficaciteContre(defenseur.especeMonstre.elements[0])
+
+            // Si le défenseur a un deuxième type
+            if (defenseur.especeMonstre.elements.size > 1) {
+                multElement *= elementTechnique.efficaciteContre(defenseur.especeMonstre.elements[1])
+            }
+
+            // Calcul final
+            return degatsBase * multiplicateur * multElement
+        }
+    }

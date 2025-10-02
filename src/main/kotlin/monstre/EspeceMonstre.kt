@@ -48,7 +48,8 @@ class EspeceMonstre (
     val particularites: String = "",
     val caracteres: String = "",
     var palierEvolution: PalierEvolution?=null,
-    val elements: MutableList<Element> = mutableListOf<Element>()
+    val elements: MutableList<Element> = mutableListOf<Element>(),
+    var listepalierTechnique: MutableList<palierTechnique> = mutableListOf()
 ) {
 
     /**

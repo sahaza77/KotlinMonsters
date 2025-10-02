@@ -1,11 +1,12 @@
 package org.example.jeu
 
 import org.example.dresseur.Entraineur
+import org.example.especeAquamy
+import org.example.especeFlamkip
+import org.example.especeSpringleaf
 import org.example.monde.Zone
 import org.example.monstre.IndividuMonstre
-import org.example.monstre1
-import org.example.monstre2
-import org.example.monstre3
+
 
 class Partie(
     val id: Int,
@@ -13,6 +14,9 @@ class Partie(
     var zone: Zone
 ) {
     fun choixStarter() {
+        val monstre1 = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
+        val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
+        val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
         // Affichage du menu de sélection
         println("Sélectionnez votre monstre de départ :")
         println("1. ${monstre1.nom}")

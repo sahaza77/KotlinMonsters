@@ -5,23 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/Element.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/monstre/ElementTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/monstre/IndividuMonstreTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/monstre/TechniqueTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/palierTechnique.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt" afterDir="false" />
-    </list>
-    <list id="657f89aa-b6fb-4077-baa3-b9c56c418b34" name="Changes by josue" comment="">
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dresseur/Entraineur.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dresseur/Entraineur.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monde/Zone.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monde/Zone.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/monstre/ElementTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/monstre/ElementTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/monstre/TechniqueTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/monstre/TechniqueTest.kt" afterDir="false" />
+    </list>
+    <list id="657f89aa-b6fb-4077-baa3-b9c56c418b34" name="Changes by josue" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/PalierEvolution.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/PalierEvolution.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/monstre/IndividuMonstreTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/monstre/IndividuMonstreTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="Kotlin JUnit5 Test Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -80,29 +77,41 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <ranges>
-        <range start1="1" end1="2" start2="1" end2="1" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="7" end1="7" start2="6" end2="7" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="8" end1="8" start2="8" end2="9" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
-        <range start1="10" end1="10" start2="11" end2="22" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
-        <range start1="133" end1="133" start2="145" end2="176" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="153" end1="153" start2="196" end2="229" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="155" end1="155" start2="231" end2="265" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
-        <range start1="159" end1="161" start2="269" end2="269" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
-        <range start1="164" end1="164" start2="272" end2="275" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="174" end1="174" start2="285" end2="309" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="203" end1="203" start2="338" end2="341" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="12" end1="12" start2="12" end2="14" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="23" end1="23" start2="25" end2="107" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="145" end1="145" start2="229" end2="230" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="146" end1="149" start2="231" end2="236" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="155" end1="155" start2="242" end2="244" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="161" end1="161" start2="250" end2="252" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="162" end1="162" start2="253" end2="255" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="163" end1="163" start2="256" end2="258" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="164" end1="164" start2="259" end2="261" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="165" end1="166" start2="262" end2="262" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="167" end1="167" start2="263" end2="264" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="268" end1="268" start2="365" end2="379" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/build.gradle.kts">
+    <file path="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt">
       <ranges>
-        <range start1="13" end1="13" start2="13" end2="15" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
-        <range start1="21" end1="21" start2="23" end2="29" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/kotlin/monstre/EspeceMonstre.kt">
-      <ranges>
-        <range start1="49" end1="49" start2="49" end2="51" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
-        <range start1="50" end1="50" start2="52" end2="53" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="13" end1="14" start2="13" end2="13" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="15" end1="15" start2="14" end2="16" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="65" end1="66" start2="66" end2="71" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="73" end1="74" start2="78" end2="81" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="75" end1="75" start2="82" end2="83" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="76" end1="77" start2="84" end2="85" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="78" end1="79" start2="86" end2="87" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="81" end1="81" start2="89" end2="90" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="83" end1="83" start2="92" end2="117" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="84" end1="85" start2="118" end2="123" changelist="657f89aa-b6fb-4077-baa3-b9c56c418b34" />
+        <range start1="93" end1="115" start2="131" end2="131" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="124" end1="126" start2="140" end2="145" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="127" end1="129" start2="146" end2="160" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="130" end1="133" start2="161" end2="168" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="135" end1="136" start2="170" end2="176" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="138" end1="140" start2="178" end2="180" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="141" end1="142" start2="181" end2="182" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="144" end1="146" start2="184" end2="186" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
+        <range start1="194" end1="194" start2="234" end2="264" changelist="3254f268-6aa5-4f5d-9111-01b041a3a0c8" />
       </ranges>
     </file>
   </component>
@@ -121,7 +130,8 @@
     "Gradle.ElementTest.executor": "Run",
     "Gradle.ElementTest.testCalculPrecision.executor": "Run",
     "Gradle.IndividuMonstreTest.executor": "Run",
-    "Gradle.KotlinMonsters [:org.example.MainKt.main()].executor": "Run",
+    "Gradle.KotlinMonsters [:org.example.MainKt.main()].executor": "Debug",
+    "Gradle.TechniqueTest.effet.executor": "Debug",
     "Gradle.TechniqueTest.testCalculBonusStab.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Repository.Attach.Annotations": "false",
@@ -153,31 +163,7 @@
       <recent name="monstre" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TechniqueTest.testCalculBonusStab">
-    <configuration name="ElementTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;monstre.ElementTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Kotlin.MainKt">
     <configuration name="ElementTest.efficaciteContre" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -226,6 +212,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="TechniqueTest.effet" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;monstre.TechniqueTest.effet&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="TechniqueTest.testCalculBonusStab" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -259,11 +269,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Gradle.TechniqueTest.effet" />
         <item itemvalue="Gradle.TechniqueTest.testCalculBonusStab" />
         <item itemvalue="Gradle.ElementTest.testCalculPrecision" />
         <item itemvalue="Gradle.ElementTest.efficaciteContre" />
-        <item itemvalue="Gradle.ElementTest" />
-        <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +298,8 @@
       <workItem from="1758610005842" duration="10026000" />
       <workItem from="1758781784126" duration="10848000" />
       <workItem from="1758896292475" duration="96000" />
-      <workItem from="1759214184341" duration="11121000" />
+      <workItem from="1759214184341" duration="11252000" />
+      <workItem from="1759386870510" duration="11009000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit">
       <option name="closed" value="true" />
@@ -338,6 +349,19 @@
           <url>file://$PROJECT_DIR$/src/main/kotlin/jeu/CombatMonstre.kt</url>
           <line>170</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Main.kt</url>
+          <line>382</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt</url>
+          <line>93</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
