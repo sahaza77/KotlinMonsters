@@ -47,13 +47,22 @@ class CombatMonstre (
 
     fun actionAdversaire() {
         if (monstreSauvage.pv > 0) {
-            // Le monstre sauvage attaque le monstre du joueur
-            // Supposons que vous avez une méthode 'attaquer' dans IndividuMonstre
-            monstreSauvage.attaquer(monstreJoueur)
-            println("${monstreSauvage.nom} attaque ${monstreJoueur.nom} !")
+            if (monstreSauvage.technique.isNotEmpty()) {
+                // Sélectionner une technique aléatoire
+                val technique = monstreSauvage.technique.random()
+                println("${monstreSauvage.nom} utilise ${technique.nom} !")
+
+                // Appliquer l’effet de la technique
+                val degats = technique.effet(monstreSauvage, monstreJoueur)
+                monstreJoueur.pv -= degats.toInt()
+                println("${monstreJoueur.nom} perd $degats PV !")
+            } else {
+                // Sinon attaque physique de base
+                monstreSauvage.attaquer(monstreJoueur)
+                println("${monstreSauvage.nom} attaque ${monstreJoueur.nom} !")
+            }
         }
     }
-
     fun actionJoueur(): Boolean {
         if (gameOver()) return false
 
@@ -90,14 +99,14 @@ class CombatMonstre (
     }
 
     fun utiliserItem(): Boolean {
-        if (joueur.sacAItems.isEmpty()) { // corrigé sacItems -> sacAKube
+        if (joueur.sacAItems.isEmpty()) {
             println("Votre sac est vide !")
             return false
         }
 
         println("Voici vos items :")
         joueur.sacAItems.forEachIndexed { index, item ->
-            println("$index : ${item.nom} - ${item.description}") // item doit avoir nom et description
+            println("$index : ${item.nom} - ${item.description}")
         }
 
         print("Entrez l'indice de l'item à utiliser : ")
@@ -106,7 +115,20 @@ class CombatMonstre (
         if (index in joueur.sacAItems.indices) {
             val item: Item = joueur.sacAItems[index]
             if (item is Utilisable) {
-                val succes = item.utiliser(monstreSauvage)
+                val succes = when (item) {
+                    is org.example.items.CapsuleTechnique -> {
+                        // Capsule -> apprend une technique au monstre du joueur
+                        item.utiliser(monstreJoueur)
+                    }
+                    is org.example.item.MonsterKube -> {
+                        // MonsterKube -> capture le monstre sauvage
+                        item.utiliser(monstreSauvage)
+                    }
+                    else -> {
+                        // Par défaut -> soigne ou buff le monstre du joueur
+                        item.utiliser(monstreJoueur)
+                    }
+                }
                 if (succes) {
                     println("Vous avez utilisé ${item.nom} avec succès.")
                     return true
