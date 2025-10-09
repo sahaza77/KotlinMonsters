@@ -1,4 +1,5 @@
 package org.example
+import BDD
 import org.example.dresseur.Entraineur
 import org.example.item.Badge
 import org.example.item.MonsterKube
@@ -13,6 +14,8 @@ import org.example.monstre.PalierEvolution
 import org.example.monstre.Technique
 import org.example.monstre.palierTechnique
 
+val db = BDD()
+//DAO
 // --------------------
 // 🌍 Variables globales (déclarées avant le main())
 // --------------------
@@ -378,6 +381,7 @@ fun main() {
 
     val partie = nouvellePartie()
     partie.choixStarter()
+    db.close()
     partie.jouer()
     // Association du palier d'évolution à l'espèce flamkip
     // Cela permet de savoir que flamkip peut évoluer selon ce palier

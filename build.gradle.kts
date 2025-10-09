@@ -22,6 +22,8 @@ kotlin {
     jvmToolchain(21)
 }
 dependencies {
+    // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+    implementation("com.mysql:mysql-connector-j:9.4.0")
     testImplementation(kotlin("test"))
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:2.2.20")
 }
