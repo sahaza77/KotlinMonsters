@@ -13,9 +13,18 @@ import org.example.monstre.IndividuMonstre
 import org.example.monstre.PalierEvolution
 import org.example.monstre.Technique
 import org.example.monstre.palierTechnique
+import org.example.DAO.EntraineursDAO
+import org.example.DAO.EspeceMonstreDAO
+import java.io.File
 
+//La connexion a la BDD
 val db = BDD()
-//DAO
+//Les DAO
+val especeDAO = EspeceMonstreDAO(db)
+val entraineurDAO= EntraineursDAO(db)
+
+//Les listes
+val listeEntraineur = entraineurDAO.findAll()
 // --------------------
 // 🌍 Variables globales (déclarées avant le main())
 // --------------------
@@ -25,6 +34,7 @@ val eau = Element(3, "Eau")
 val insecte = Element(4, "Insecte")
 val roche = Element(5, "Roche")
 val normal = Element(6, "Normal")
+val electrique = Element(7, "Électrik")
 
 // ==========================
 // ⚔️ Techniques
@@ -229,6 +239,28 @@ val especePyrolyx = EspeceMonstre(
     description = "Dragon de feu, crache des flammes ardentes, rapide et puissant.",
     particularites = "Peut cracher des flammes très chaudes.",
     caracteres = "Féroce, impulsif, loyal"
+)
+    // ⚡ Nouvelle espèce personnalisée : Voltigon
+    val especeVoltigon = EspeceMonstre(
+            id = 20,
+    nom = "Voltigon",
+    type = "Électrik",
+    baseAttaque = 14,
+    baseDefense = 10,
+    baseVitesse = 16,
+    baseAttaqueSpe = 15,
+    baseDefenseSpe = 9,
+    basePv = 58,
+    modAttaque = 11.0,
+    modDefense = 7.5,
+    modVitesse = 10.5,
+    modAttaqueSpe = 10.0,
+    modDefenseSpe = 7.0,
+    modPv = 26.0,
+    description = "Voltigon canalise l’énergie des orages. Son corps vibre d’électricité pure.",
+    particularites = "Peut libérer des arcs électriques en courant.",
+    caracteres = "Énergique, loyal, imprévisible.",
+    elements = mutableListOf(electrique)
 )
 // Création d'une nouvelle espèce Pyrokip, évolution de Flamkip
 val especePyrokip = EspeceMonstre(
@@ -446,12 +478,17 @@ fun nouvellePartie(): Partie {
         joueur = entraineur,
         zone = zoneInitiale
     )
+    joueur.id=0
+    entraineurDAO.save(joueur)
+    val listeEspeces = especeDAO.findAll()
+    println("===== Liste des espèces =====")
+    val asciiVoltigonFront = File("src/main/resources/art/voltigon/front.txt").readText()
+    val asciiVoltigonBack = File("src/main/resources/art/voltigon/back.txt").readText()
 
+    println(asciiVoltigonFront)
+    println(asciiVoltigonBack)
     // Retourne la nouvelle partie créée
     return partie
-
-
-
 }
 /**
  * Change la couleur du message donné selon le nom de la couleur spécifié.
