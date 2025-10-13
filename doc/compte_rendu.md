@@ -1,6 +1,6 @@
 #  Compte Rendu Kotlin Monster
 
-## Partie 1 :
+## SPRINT 1 : Le Noyau du projet
 
 Ce est un test en **_italique_** et en gras.
 ![ERD TODO.png](ERD%20TODO.png)

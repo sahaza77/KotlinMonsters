@@ -4,6 +4,7 @@ import org.example.joueur
 import org.example.monstre.IndividuMonstre
 import org.example.item.Utilisable
 import org.example.items.Item
+import java.lang.Integer.max
 
 class CombatMonstre (
     var monstreJoueur: IndividuMonstre, // changé en var pour pouvoir le remplacer dans changerMonstre
@@ -58,7 +59,21 @@ class CombatMonstre (
                 println("${monstreJoueur.nom} perd $degats PV !")
             } else {
                 // Sinon attaque physique de base
-                monstreSauvage.attaquer(monstreJoueur)
+                var dif=0
+                if(monstreSauvage.technique.size!=0){
+                    val degat = monstreSauvage.technique.random().effet(monstreSauvage,monstreJoueur)
+                    val pvAvant = monstreJoueur.pv
+                    monstreJoueur.pv-=degat.toInt()
+                     dif= pvAvant - monstreJoueur.pv
+
+                }
+                else{
+                    val pvAvant = monstreJoueur.pv
+                    var degat = monstreSauvage.attaque - (monstreJoueur.defense/2)
+                    degat = max(1,degat)
+                    monstreJoueur.pv - degat
+                    dif=pvAvant - monstreJoueur.pv
+                }
                 println("${monstreSauvage.nom} attaque ${monstreJoueur.nom} !")
             }
         }

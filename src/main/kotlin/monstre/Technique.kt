@@ -41,7 +41,7 @@ class Technique (
         }
     }
         fun effet(attaquant: IndividuMonstre, defenseur: IndividuMonstre): Double {
-            // TODO gérer les buffs / debuffs plus tard
+
             if (!faireDegat) return 0.0
 
             // Choix attaque spéciale ou physique

@@ -120,3 +120,4 @@ VALUES
     ('Galum de Clara', 7, 13, 3, 12, 15, 6, 8, 12, 55, 55, 1.0, 0.0),
     ('Flamkip de Clara', 5, 4, 3, 12, 8, 13, 16, 7, 50, 50, 1.0, 0.0);'
 
+delete from Entraineurs where nom = 'Sacha';

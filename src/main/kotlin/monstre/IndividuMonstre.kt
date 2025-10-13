@@ -88,7 +88,7 @@ class IndividuMonstre (
             }
         } else {
             // Affiche un message si aucun palier d'évolution n'est défini pour l'espèce
-            println("Pas de palier d'évolution défini")
+
         }
         // Parcours de la liste de paliers techniques pour voir si une nouvelle technique peut être apprise
         especeMonstre.listepalierTechnique.forEach { palierTechnique ->

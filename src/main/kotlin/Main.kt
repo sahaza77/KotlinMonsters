@@ -15,6 +15,8 @@ import org.example.monstre.Technique
 import org.example.monstre.palierTechnique
 import org.example.DAO.EntraineursDAO
 import org.example.DAO.EspeceMonstreDAO
+import org.example.jeu.CombatDresseur
+import org.example.monde.Arene
 import java.io.File
 
 //La connexion a la BDD
@@ -209,13 +211,13 @@ val especeGalum = EspeceMonstre(
     baseVitesse = 6,
     baseAttaqueSpe = 8,
     baseDefenseSpe = 12,
-    basePv = 55,
+    basePv = 5,
     modAttaque = 10.0,
     modDefense = 12.0,
     modVitesse = 4.0,
     modAttaqueSpe = 6.0,
     modDefenseSpe = 6.0,
-    modPv = 26.0,
+    modPv = 5.0,
     description = "Golem ancien de pierre, très résistant, semble figé dans le temps.",
     particularites = "Peut rester immobile pendant des heures comme une statue.",
     caracteres = "Sérieux, stoïque, fiable"
@@ -349,6 +351,25 @@ val galum = EspeceMonstre(
     caracteres =  "Solide, calme.",
     elements = mutableListOf() // ou listOf(roche) si tu as un élément roche
 )
+// --- Exemples d'individus pour les PNJ / arène (IDs choisis pour ne pas coller avec tes starters)
+val monAlice1 = IndividuMonstre(201, "springleaf_alice", 1500.0, especeSpringleaf, null)
+val monBob1   = IndividuMonstre(202, "aquamy_bob", 1500.0, especeAquamy, null)
+val monBob2   = IndividuMonstre(203, "bugsyface_bob", 1500.0, especeGalum, null) // adapte espece
+val monClara1 = IndividuMonstre(204, "galum_clara", 1500.0, especeGalum, null)
+val monClara2 = IndividuMonstre(205, "flamkip_clara", 1500.0, especeFlamkip, null)
+
+// --- Création des dresseurs (PNJ)
+val dresseurBob = Entraineur(1001, "Bob", 200)
+val dresseurAlice = Entraineur(1002, "Alice", 200)
+val dresseurClara = Entraineur(1003, "Clara", 300) // sera champion éventuellement
+
+val areneFlamboyante = Arene(
+    id = 1,
+    nom = "Flamboyante",
+    dresseurs = mutableListOf(dresseurBob, dresseurAlice),
+    champion = dresseurClara
+)
+
 // Création de la ville RacailleCity avec Galum comme espèce disponible
 val racailleCity = Ville(
     id = 3,
@@ -357,8 +378,10 @@ val racailleCity = Ville(
     especesMonstres = mutableListOf(galum)
 )
 
-
 fun main() {
+// Attacher l'arène a RacailleCity (ou à ta ville correspondante)
+
+    racailleCity.arene = areneFlamboyante
 
     // --- Définition des forces/faiblesses/immunisés ---
     // 🔥 Feu
@@ -397,6 +420,17 @@ fun main() {
     route2.zonePrecedente = route1
     joueur.sacAItems.add(kube1)
 
+    dresseurAlice.equipeMonstre.add(monAlice1)
+    monAlice1.entraineur = dresseurAlice
+
+    dresseurBob.equipeMonstre.addAll(listOf(monBob1, monBob2))
+    monBob1.entraineur = dresseurBob
+    monBob2.entraineur = dresseurBob
+
+    dresseurClara.equipeMonstre.addAll(listOf(monClara1, monClara2))
+    monClara1.entraineur = dresseurClara
+    monClara2.entraineur = dresseurClara
+
     // Après la déclaration de especeFlamkip
     val paliersFlamkip = mutableListOf<palierTechnique>(
         palierTechnique(3, 3, charge),
@@ -412,7 +446,9 @@ fun main() {
     especeSpringleaf.listepalierTechnique = paliersSpringleaf
 
     val partie = nouvellePartie()
-    partie.choixStarter()
+    joueur = partie.choixStarter()
+    val combatDresseur = CombatDresseur(1, joueur, dresseurBob)
+    combatDresseur.lanceCombat()
     db.close()
     partie.jouer()
     // Association du palier d'évolution à l'espèce flamkip
@@ -479,7 +515,9 @@ fun nouvellePartie(): Partie {
         zone = zoneInitiale
     )
     joueur.id=0
+    joueur=entraineur
     entraineurDAO.save(joueur)
+
     val listeEspeces = especeDAO.findAll()
     println("===== Liste des espèces =====")
     val asciiVoltigonFront = File("src/main/resources/art/voltigon/front.txt").readText()

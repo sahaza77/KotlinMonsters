@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/DAO/EntraineursDAO.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/DAO/EspeceMonstreDAO.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/DAO/IndividuMonstreDAO.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/art/voltigon/back.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/art/voltigon/front.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatDresseur.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/monde/Arene.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/compte_rendu.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/compte_rendu.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatMonstre.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jeu/Partie.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/Partie.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monde/ville.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monde/Ville.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ERD TODO.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ERD TODO.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/table.sql" afterDir="false" />
     </list>
     <list id="657f89aa-b6fb-4077-baa3-b9c56c418b34" name="Changes by josue" comment="" />
@@ -86,7 +89,7 @@
     "Gradle.ElementTest.executor": "Run",
     "Gradle.ElementTest.testCalculPrecision.executor": "Run",
     "Gradle.IndividuMonstreTest.executor": "Run",
-    "Gradle.KotlinMonsters [:org.example.MainKt.main()].executor": "Debug",
+    "Gradle.KotlinMonsters [:org.example.MainKt.main()].executor": "Run",
     "Gradle.TechniqueTest.effet.executor": "Debug",
     "Gradle.TechniqueTest.testCalculBonusStab.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -270,7 +273,8 @@
       <workItem from="1759731996614" duration="3000" />
       <workItem from="1759991948935" duration="3051000" />
       <workItem from="1759995146465" duration="8512000" />
-      <workItem from="1760099781335" duration="8148000" />
+      <workItem from="1760099781335" duration="9023000" />
+      <workItem from="1760336946094" duration="12018000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit">
       <option name="closed" value="true" />

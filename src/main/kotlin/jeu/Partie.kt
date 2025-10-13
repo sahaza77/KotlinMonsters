@@ -4,6 +4,7 @@ import org.example.dresseur.Entraineur
 import org.example.especeAquamy
 import org.example.especeFlamkip
 import org.example.especeSpringleaf
+import org.example.monde.Ville
 import org.example.monde.Zone
 import org.example.monstre.IndividuMonstre
 
@@ -13,7 +14,7 @@ class Partie(
     val joueur: Entraineur,
     var zone: Zone
 ) {
-    fun choixStarter() {
+    fun choixStarter(): Entraineur {
         val monstre1 = IndividuMonstre(1, "springleaf", 1500.0, especeSpringleaf, null)
         val monstre2 = IndividuMonstre(2, "flamkip", 1500.0, especeFlamkip, null)
         val monstre3 = IndividuMonstre(3, "aquamy", 1500.0, especeAquamy, null)
@@ -27,7 +28,7 @@ class Partie(
         val choix = readlnOrNull()?.toIntOrNull()
         if (choix == null || choix !in 1..3) {
             println("Choix invalide.")
-            return
+
         }
 
         // Confirmation du choix
@@ -44,6 +45,7 @@ class Partie(
         starterChoisi.entraineur = joueur
 
         println("Vous avez choisi ${starterChoisi.nom} comme starter !")
+        return joueur
     }
 
     fun modifierOrdreEquipe() {
@@ -153,47 +155,73 @@ class Partie(
         println("2 - Examiner l’équipe de monstres")
         println("3 - Aller à la zone suivante")
         println("4 - Aller à la zone précédente")
-        print("Entrez le numéro de votre choix : ")
+
+        // Si la zone est une Ville, on ajoute les options supplémentaires
+        if (zone is Ville) {
+            println("5 - Soigner tous vos monstres")
+            println("6 - Challenger l’arène ⚔️")
+            println("7 - Transférer un monstre (bonus)")
+        }
 
         // Lire la réponse de l'utilisateur
+        print("Entrez le numéro de votre choix : ")
         when (readLine()?.trim()) {
-            "1" -> {
-                // Appeler la méthode rencontreMonstre() de la zone
-                zone.rencontreMonstre(entraineur = joueur)
-            }
+            "1" -> zone.rencontreMonstre(entraineur = joueur)
 
-            "2" -> {
-                // Appeler la méthode examineEquipe() de la zone
-                this.examineEquipe()
-            }
+            "2" -> examineEquipe()
 
             "3" -> {
-                // Vérifier si zoneSuivante existe
                 val zoneSuivante = zone.zoneSuivante
                 if (zoneSuivante != null) {
-                    // Modifier la zone courante
                     zone = zoneSuivante
                     println("Vous avancez vers la zone suivante.")
                 } else {
-                    println("Il n'y a pas de zone suivante.")
+                    println("Il n’y a pas de zone suivante.")
                 }
             }
 
             "4" -> {
-                // Vérifier si zonePrecedente existe
                 val zonePrecedente = zone.zonePrecedente
                 if (zonePrecedente != null) {
-                    // Modifier la zone courante
                     zone = zonePrecedente
                     println("Vous revenez à la zone précédente.")
                 } else {
-                    println("Il n'y a pas de zone précédente.")
+                    println("Il n’y a pas de zone précédente.")
                 }
             }
 
-            else -> {
-                println("Choix invalide. Veuillez réessayer.")
+            // Option 5 : soigner tous les monstres (disponible uniquement en ville)
+            "5" -> {
+                if (zone is Ville) {
+                    joueur.equipeMonstre.forEach { monstre ->
+                        monstre.pv = monstre.pvMax
+                    }
+                    println("Tous vos monstres ont été soignés ! 💖")
+                } else {
+                    println("Cette action n’est disponible que dans une ville.")
+                }
             }
+
+            // Option 6 : challenger l’arène (ton code inchangé)
+            "6" -> {
+                if (zone is Ville) {
+                    println("TODO: attaquer l’arène ⚔️")
+                    (zone as Ville).arene!!.challenger(joueur)
+                } else {
+                    println("Il n’y a pas d’arène dans cette zone.")
+                }
+            }
+
+            // Option 7 : transfert de monstre (bonus)
+            "7" -> {
+                if (zone is Ville) {
+                    println("TODO: transférer un monstre entre l’équipe et la boîte 📦")
+                } else {
+                    println("Cette action n’est disponible que dans une ville.")
+                }
+            }
+
+            else -> println("Choix invalide. Veuillez réessayer.")
         }
     }
 }
