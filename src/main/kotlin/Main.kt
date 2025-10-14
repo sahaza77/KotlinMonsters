@@ -446,9 +446,9 @@ fun main() {
     especeSpringleaf.listepalierTechnique = paliersSpringleaf
 
     val partie = nouvellePartie()
-    joueur = partie.choixStarter()
-    val combatDresseur = CombatDresseur(1, joueur, dresseurBob)
-    combatDresseur.lanceCombat()
+    //joueur = partie.choixStarter()
+    //val combatDresseur = CombatDresseur(1, joueur, dresseurBob)
+    //combatDresseur.lanceCombat()
     db.close()
     partie.jouer()
     // Association du palier d'évolution à l'espèce flamkip
@@ -488,6 +488,29 @@ fun main() {
     assert(racailleCity.zonePrecedente?.nom == "Route 2")
     println("Tests OK")
 
+    // -------------------------
+    // 🧪 Test fonctionnel complet
+    // -------------------------
+    val monstreTest = IndividuMonstre(3001, "flamkip_test", 1500.0, especeFlamkip, joueur)
+    joueur.equipeMonstre.add(monstreTest)
+    monstreTest.entraineur = joueur
+    println("🔥 ${joueur.nom} commence l’aventure avec ${monstreTest.nom} !")
+
+    println("\n=== 🧭 Test : Aller jusqu’à la ville et combattre dans l’arène ===")
+
+    val partieTest = Partie(99, joueur, route1)
+    partieTest.zone = route2
+    println("🚶 Vous avancez jusqu’à ${partieTest.zone.nom}...")
+    partieTest.zone = racailleCity
+    println("🏙️ Vous arrivez à ${partieTest.zone.nom} !")
+
+    if (racailleCity.arene != null) {
+        println("🔥 Vous entrez dans l’arène ${racailleCity.arene!!.nom} ! ⚔️")
+        racailleCity.arene!!.challenger(joueur)
+    } else {
+        println("❌ Aucune arène trouvée dans cette ville.")
+    }
+
 }
 fun nouvellePartie(): Partie {
     // Affiche un message d'accueil pour la nouvelle partie
@@ -516,7 +539,7 @@ fun nouvellePartie(): Partie {
     )
     joueur.id=0
     joueur=entraineur
-    entraineurDAO.save(joueur)
+   //entraineurDAO.save(joueur)
 
     val listeEspeces = especeDAO.findAll()
     println("===== Liste des espèces =====")
