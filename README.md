@@ -104,4 +104,4 @@ Le projet permet d’acquérir et de mettre en pratique les notions suivantes :
 
 Pour découvrir le détail du développement, les diagrammes UML, les évolutions par sprint et les explications techniques du projet :
 
-➡️ **Ouvrez le fichier [`compte_rendu.md`](compte_rendu.md)**
+➡️ **Ouvrez le fichier [`compte_rendu.md`](doc/compte_rendu.md)**
