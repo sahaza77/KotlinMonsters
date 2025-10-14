@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatDresseur.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/monde/Arene.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/compte_rendu.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/compte_rendu.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/CombatMonstre.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/jeu/Partie.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/jeu/Partie.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monde/ville.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monde/Ville.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/IndividuMonstre.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/monstre/Technique.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ERD TODO.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ERD TODO.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/table.sql" afterDir="false" />
-    </list>
+    <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit" />
     <list id="657f89aa-b6fb-4077-baa3-b9c56c418b34" name="Changes by josue" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,45 +68,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.BDDTest.executePreparedStatement.executor": "Run",
-    "Gradle.ElementTest.efficaciteContre.executor": "Run",
-    "Gradle.ElementTest.executor": "Run",
-    "Gradle.ElementTest.testCalculPrecision.executor": "Run",
-    "Gradle.IndividuMonstreTest.executor": "Run",
-    "Gradle.KotlinMonsters [:org.example.MainKt.main()].executor": "Run",
-    "Gradle.TechniqueTest.effet.executor": "Debug",
-    "Gradle.TechniqueTest.testCalculBonusStab.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/sahaza/IdeaProjects/KotlinMonsters/doc",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/sahaza/IdeaProjects/KotlinMonsters/src/main/kotlin/Main.kt",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.BDDTest.executePreparedStatement.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ElementTest.efficaciteContre.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ElementTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ElementTest.testCalculPrecision.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IndividuMonstreTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.KotlinMonsters [:org.example.MainKt.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TechniqueTest.effet.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.TechniqueTest.testCalculBonusStab.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sahaza/IdeaProjects/KotlinMonsters/doc&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/sahaza/IdeaProjects/KotlinMonsters/src/main/kotlin/Main.kt&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -274,7 +261,7 @@
       <workItem from="1759991948935" duration="3051000" />
       <workItem from="1759995146465" duration="8512000" />
       <workItem from="1760099781335" duration="9023000" />
-      <workItem from="1760336946094" duration="12018000" />
+      <workItem from="1760336946094" duration="12251000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit">
       <option name="closed" value="true" />
