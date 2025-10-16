@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <list id="657f89aa-b6fb-4077-baa3-b9c56c418b34" name="Changes by josue" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -265,7 +264,8 @@
       <workItem from="1759995146465" duration="8512000" />
       <workItem from="1760099781335" duration="9023000" />
       <workItem from="1760336946094" duration="12251000" />
-      <workItem from="1760423383779" duration="3440000" />
+      <workItem from="1760423383779" duration="3815000" />
+      <workItem from="1760428518352" duration="245000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit">
       <option name="closed" value="true" />
