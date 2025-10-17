@@ -1,10 +1,12 @@
 #  Compte Rendu Kotlin Monster
 
-## SPRINT 1 : Le Noyau du projet
+![Diagramme de la base de données](ERD_TODO.png)
+
+## 🧱 SPRINT 1 : Le Noyau du projet
 Ce premier sprint avait pour but de poser les bases du projet Kotlin Monster, un mini-jeu inspiré de Pokémon, développé en Kotlin.
 L’objectif principal était de créer la structure du projet, les classes principales (Monstre, Entraîneur, etc.) et d’effectuer les premiers tests de fonctionnement en console.
 
-📘 Prompts utilisés
+### 📘 Prompts utilisés
 
 « Aide-moi à structurer le projet Kotlin Monster avec les classes principales Monstre, Entraineur et Attaque. »
 → ChatGPT m’a proposé une structure claire avec des classes bien séparées et des constructeurs adaptés.
@@ -12,20 +14,22 @@ L’objectif principal était de créer la structure du projet, les classes prin
 « Donne-moi un exemple de fonction de combat entre deux monstres en Kotlin. »
 → J’ai obtenu un code de base que j’ai ensuite adapté pour gérer les dégâts, les PV restants et les tours de combat.
 
-⚙️ Réalisations
+### ⚙️ Réalisations
 
-Création du projet Kotlin.
+- Création du projet Kotlin dans IntelliJ IDEA
 
-Définition des classes principales : Monstre, Attaque, Entraineur.
+- Définition des classes principales : Monstre, Attaque, Entraineur.
 
-Test initial du système de combat dans le terminal.
+- Test initial du système de combat dans le terminal
 
-## SPRINT 2 : Module Éléments et Technique
+- Vérification du bon déroulement des tours et des points de vie
+
+## 🔥 SPRINT 2 : Module Éléments et Technique
 
 Ce sprint consistait à enrichir le projet en ajoutant les types élémentaires (Feu, Eau, Plante, etc.) et les attaques techniques.
 Cela permettait d’ajouter des avantages et désavantages selon les types, pour donner plus de profondeur au gameplay.
 
-📘 Prompts utilisés
+### 📘 Prompts utilisés
 
 « Comment gérer les types élémentaires dans un jeu de monstres (feu, eau, plante) en Kotlin ? »
 → ChatGPT m’a conseillé d’utiliser une enum class pour représenter les éléments.
@@ -33,19 +37,24 @@ Cela permettait d’ajouter des avantages et désavantages selon les types, pour
 « Montre-moi comment appliquer un multiplicateur de dégâts selon le type d’attaque et de défense. »
 → J’ai intégré une fonction calculerDegats() prenant en compte les affinités entre types.
 
-⚙️ Réalisations
+### ⚙️ Réalisations
 
-Création du module Element.kt avec les différents types.
+- Création du module Element.kt avec les différents types élémentaires
 
-Ajout des attaques élémentaires et du calcul de dégâts selon le type.
+- Ajout des attaques élémentaires et du calcul de dégâts selon le type
 
-Premier équilibrage des statistiques de base.
+- Premier équilibrage des statistiques de base
 
-## SPRINT 2 (bis) : Module Évolution, Ville et Arène
+- Tests en console avec mes premières espèces :
+🌱 Springleaf (type Graine)
+🔥 Flamkip (type Animal)
+💧 Aquamy (type Météo)
 
-Dans ce sprint, j’ai travaillé sur les mécaniques d’évolution des monstres, la gestion de la ville et l’ajout de l’arène permettant les combats officiels.
+## 🌆 SPRINT 2 (bis) : Module Évolution, Ville et Arène
 
-📘 Prompts utilisés
+Dans ce sprint, j’ai travaillé sur les mécaniques d’évolution des monstres, la gestion de la ville et l’ajout de l’arène permettant les combats officiels entre dresseurs.
+
+### 📘 Prompts utilisés
 
 « Comment faire évoluer un monstre quand il atteint un certain niveau en Kotlin ? »
 → ChatGPT m’a proposé un système basé sur un seuil de niveau et un mapping vers une nouvelle espèce.
@@ -53,17 +62,24 @@ Dans ce sprint, j’ai travaillé sur les mécaniques d’évolution des monstre
 « Comment structurer un système de villes et d’arènes dans un jeu texte ? »
 → Le modèle proposé m’a permis de créer une navigation entre zones et d’ajouter une arène fonctionnelle.
 
-⚙️ Réalisations
+### ⚙️ Réalisations
 
-Ajout d’un système d’évolution : les monstres changent d’espèce au niveau requis.
+- Ajout d’un système d’évolution : les monstres changent d’espèce au niveau requis
 
-Création de la ville et de l’arène.
+- Création de la classe Ville et de la classe Arène
 
-Test fonctionnel complet : déplacement jusqu’à la ville et combat dans l’arène.
+- Ajout des classes CombatMonstre et CombatDresseur pour gérer les affrontements
 
-## SPRINT 3 : Base de Données & DAO
+- Création du dresseur champion et des dresseurs adversaires
 
-Ce sprint était dédié à la connexion du jeu avec une base de données MySQL, à l’aide de JDBC et de DAO (Data Access Object) pour manipuler les données.
+- Test fonctionnel complet :
+🚶‍♂️ Aller jusqu’à la ville
+🏟️ Combat dans l’arène (victoire contre le champion)
+
+## 💾 SPRINT 3 : Base de Données & DAO
+
+Ce sprint était consacré à la connexion du jeu avec une base de données MySQL, via JDBC, et à l’implémentation des DAO (Data Access Object).
+Ces DAO permettent d’isoler la logique d’accès aux données et de manipuler les entités directement depuis Kotlin.
 
 💾 Création des tables SQL
 ``` sql
@@ -71,7 +87,12 @@ CREATE TABLE Entraineurs(
                             id INTEGER PRIMARY KEY AUTO_INCREMENT,
                             nom VARCHAR(255),
                             argents INTEGER);
+```
 
+
+📝 Explication :
+Cette table stocke les informations de base des entraîneurs (leur identifiant, nom et argent disponible).
+```
 CREATE TABLE EspeceMonstre (
                                id INT PRIMARY KEY AUTO_INCREMENT,
                                nom VARCHAR(255) NOT NULL,
@@ -93,6 +114,10 @@ CREATE TABLE EspeceMonstre (
                                caracteres TEXT
 );
 
+```
+📝 Explication :
+Cette table contient toutes les espèces de monstres disponibles dans le jeu, avec leurs statistiques de base et leurs descriptions.
+```
 CREATE TABLE IndividuMonstre (
                                  id INT PRIMARY KEY AUTO_INCREMENT,
                                  nom VARCHAR(255),
@@ -126,7 +151,11 @@ CREATE TABLE IndividuMonstre (
                                          REFERENCES Entraineurs(id)
                                          ON DELETE SET NULL
 );
-
+```
+📝 Explication :
+Cette table représente les monstres individuels (liés à une espèce et à un entraîneur).
+Les clés étrangères permettent de relier chaque monstre à son espèce et à son dresseur.
+```
 INSERT INTO Entraineurs (id, nom, argents)
 VALUES
     (1, 'Bob', 10000),
@@ -192,3 +221,32 @@ VALUES
 delete from Entraineurs where nom = 'Sacha';
 
 ```
+### ⚙️ DAO et Connexion BDD
+
+- Création des classes EntraineurDAO, EspeceMonstreDAO, IndividuMonstreDAO
+
+- Ajout de la méthode findAll() pour chaque DAO
+
+- Connexion à la base via le fichier BDD.kt
+
+- Test de récupération des espèces et affichage dans Main.kt
+
+- Vérification de la persistance après relance du programme
+
+### 🧪 Test fonctionnel final
+
+À la fin du développement, j’ai testé le scénario complet :
+
+- Démarrage du jeu
+
+- Exploration des zones et capture de monstres
+
+- Déplacement jusqu’à la ville
+
+- Combat dans l’arène contre plusieurs dresseurs
+
+- Victoire finale contre le champion 🎖️
+
+### 📘 Pour plus d’informations
+
+➡️ Voir le fichier README.md pour la présentation complète du projet.
