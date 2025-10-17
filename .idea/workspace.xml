@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3254f268-6aa5-4f5d-9111-01b041a3a0c8" name="Changes" comment="deuxieme commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/compte_rendu.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/compte_rendu.md" afterDir="false" />
     </list>
     <list id="657f89aa-b6fb-4077-baa3-b9c56c418b34" name="Changes by josue" comment="" />
@@ -269,7 +268,7 @@
       <workItem from="1760423383779" duration="3815000" />
       <workItem from="1760428518352" duration="245000" />
       <workItem from="1760607806698" duration="1101000" />
-      <workItem from="1760708468680" duration="1601000" />
+      <workItem from="1760708468680" duration="1729000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit">
       <option name="closed" value="true" />

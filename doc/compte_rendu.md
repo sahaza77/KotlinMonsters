@@ -92,7 +92,7 @@ CREATE TABLE Entraineurs(
 
 📝 Explication :
 Cette table stocke les informations de base des entraîneurs (leur identifiant, nom et argent disponible).
-```
+``` sql
 CREATE TABLE EspeceMonstre (
                                id INT PRIMARY KEY AUTO_INCREMENT,
                                nom VARCHAR(255) NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE EspeceMonstre (
 ```
 📝 Explication :
 Cette table contient toutes les espèces de monstres disponibles dans le jeu, avec leurs statistiques de base et leurs descriptions.
-```
+``` sql
 CREATE TABLE IndividuMonstre (
                                  id INT PRIMARY KEY AUTO_INCREMENT,
                                  nom VARCHAR(255),
@@ -155,7 +155,7 @@ CREATE TABLE IndividuMonstre (
 📝 Explication :
 Cette table représente les monstres individuels (liés à une espèce et à un entraîneur).
 Les clés étrangères permettent de relier chaque monstre à son espèce et à son dresseur.
-```
+``` sql
 INSERT INTO Entraineurs (id, nom, argents)
 VALUES
     (1, 'Bob', 10000),
