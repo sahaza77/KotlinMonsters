@@ -249,4 +249,4 @@ delete from Entraineurs where nom = 'Sacha';
 
 ### 📘 Pour plus d’informations
 
-➡️ Voir le fichier [README.md](./KotlinMonsters/README.md) pour la présentation complète du projet.
+➡️ Voir le fichier [README.md](../README.md) pour la présentation complète du projet.
